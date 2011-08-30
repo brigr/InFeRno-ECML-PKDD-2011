@@ -1,74 +1,137 @@
 \documentclass{beamer}
-%\usecolortheme[named=green]{structure}
+
 \mode<presentation> {
 \usetheme{Copenhagen} % Pretty neat, soft color.
-%\setbeamertemplate{footline}[page number]
 \setbeamercovered{transparent}
 \setbeamercovered{invisible}
-% To remove the navigation symbols from the bottom of slides%
 \setbeamertemplate{navigation symbols}{} 
 }
-\usepackage{graphicx}
+
+\usepackage{graphicx,amssymb}
+\usepackage{amsmath}
 \usepackage{bm} 
 \usepackage{wasysym}
+
 \title[ECML/PKDD 2011 demo session (demo \#10)]{InFeRno - an Intelligent Framework for Recognizing Pornographic Web pages}
 \author{\bf{\underline{S. Karavarsamis}, N. Ntarmos and K. Blekas }}
+
 \institute[UoI]
-{
+{\large
 Department of Computer Science\\
-University of Ioannina, Greeece \\
+University of Ioannina, Ioannina, Greeece \\
 \medskip
-{\{cs061205, ntarmos, kblekas\}@cs.uoi.gr}
+{\normalsize E-mail: \{cs061205, ntarmos, kblekas\}@cs.uoi.gr}
 }
-\date{\today}
+\date{}
+
 \begin{document}
+
 \begin{frame}
 \titlepage
 \end{frame}
+
 \begin{frame}
 \frametitle{Problem preliminaries and intuition}
-\begin{block}
-{}
-Given the unstructured and chaotic nature of the Web, we seek statistical mining techniques to assimilate detection of pornographic content by exploiting visual semantics of imagery (images, video, etc).
-\end{block}
-\emph{Some driving goals out of this demo:}
-\begin{enumerate}
-\item measure contribution of feature-based visual classification techniques alone for web page content assessment via a transparent-proxying and a content adaptation testbed (ICAP)
-\item introduce "bikini" class to enhance accuracy of nudity-score estimation and/or cope with tolerance in presence of minuscule nude-like images (e.g. bikini) in benign web pages
-\item evaluate discriminative performance of a diverse set of computationally-friendly low-level visual features in a real-time multi-class SVM classification scheme
-\end{enumerate}
+
+\begin{itemize}
+	\item Leverage human intervention in content assessment
+
+	\begin{enumerate}
+		\item Demanding need for intelligent content assessment
+		\item Content too diverse and enormous to pre-classify manually
+	\end{enumerate}
+
+	\item Nudity-content indicator cues
+	
+	\begin{enumerate}
+		\item exploit accompanying text (prior knowledge)
+		\item visual content (images, video, audio)
+	\end{enumerate}
+	
+	\item Web page assessment based solely on the image content
+
+	\begin{enumerate}
+		\item Determine an efficient feature vector space
+		\item Introduce an intermediate 'bikini' class
+		\item Facilitate identification of 'soft' nudity
+		\item Employ multi-class SVM in a one-against-all scheme
+		\item Provide full-fledged pornography elimination system implementation (ICAP/HTTP proxy integration)
+	\end{enumerate}
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}
 \frametitle{InFeRno architecture}
 \begin{center}
-\includegraphics[scale=0.6]{images/network_diagram.png}
-\begin{enumerate}
-\item A systems administrator can tweak network parameters and adapt nudity acceptance thresholds to an orginization's needs
-\item Zero-knowledge implementation of customized filtering directives within InFeRno
-\item InFeRno's implemented as an ICAP module decoupled from the classification and caching processes
-\item Implementation of a fast ISAM-based cache for fast web object I/O (lookups, updates, etc)
-\end{enumerate}
+	\includegraphics[scale=0.6]{images/network_diagram.png}
+	\begin{enumerate}
+		\item The administrator can tweak classification / network parameters (flexible configuration)
+		\item Standalone implementation of the InFeRno core as an ICAP module (integrates well with most HTTP proxy servers)
+		\item Decoupled image classification and web page preprocessing (network I/O, web page fusion)
+		\item Using a fast ISAM-based cache for fast  I/O (classification lookups, updates, etc)
+	\end{enumerate}
 \end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Image classification}
+\begin{center}
+		\begin{tabular}[c]{ccc}
+		\ \ \includegraphics[width=.13\columnwidth]{images/orig.pdf}  \ \ &
+		\ \ \includegraphics[width=.13\columnwidth]{images/skin.pdf} \ \ &
+		\ \ \includegraphics[width=.13\columnwidth]{images/grid.pdf} \ \ \\
+			original image & skin detection & contour extraction \\
+		\end{tabular}
+\end{center}
+
+\begin{itemize}
+  \item 3-stage image processing/classification
+     \begin{enumerate}
+        \item Image preprocessing, and skin detection (pixel-based)
+        \item Contour extraction (rough ROI estimation)
+		\item Feature extraction and Classification
+		  \begin{itemize}
+			\item Selected Features (mean RGB intensities/deviations, skin-to-nonskin ratio, contour orienation, Hu moments)
+	        \item Classification scheme (multi-class one-against-all SVM scheme employing linear/RBF kernels)
+	       \end{itemize}
+	\end{enumerate}
+   \item Some key-software used in this module
+      \begin{enumerate}
+		\item OpenCV (mainly image I/O);  libsvm (SVM training); GDK library (GIF support)
+	  \end{enumerate}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{InFeRno vs POESIA}
-\begin{enumerate}
-\item Performance on image classification was evaluated and compared to that of POESIA in terms of CPU time consumption (see figure below).
-\item The generalization performance of the InFeRno one-against-all SVM classification scheme was comparable to that of POESIA.
-\end{enumerate}
-\begin{block}
-{}
-A 4x speedup was observed on our manually collected dataset (660 nude images, 600 bikini images and 4500 benign images).
-\end{block}
-\begin{center}
-\includegraphics[scale=1.3]{images/scatter-p-t-all-bars.pdf}
-\end{center}
+	\begin{itemize}
+		\item Dataset
+			\begin{enumerate}
+				\item Manually collected a dataset of 680 bikini images, 660 porn images and 4260 benign images from the Web
+			\end{enumerate}
+
+		\item Comparison to the POESIA filter (poesia-filter.org)
+			\begin{enumerate}
+				\item compared InFeRno image filter to that of the POESIA filter in terms of CPU consumption, and generalization ability
+			\end{enumerate}
+	\end{itemize}
+	
+	\begin{block}
+	{}
+	A \textbf{4x speedup} was observed on our dataset (comprising porn, bikini and benign images).
+	\end{block}
+
+	\begin{center}
+		\includegraphics[scale=1.3]{images/scatter-p-t-all-bars.pdf}
+	\end{center}
+
 \end{frame}
 
 \begin{frame}
-\centerline{For more information, please feel free to stop by our demonstration desk!}
-\centerline{\bf{Thank you for your attention! \smiley}}
+	\centerline{Thank you for your attention! \smiley}
+	\centerline{}
+	\centerline{\small{visit InFeRno at \bf{github.com/ntarmos/InFeRno}}}
 \end{frame}
+
 \end{document} 
