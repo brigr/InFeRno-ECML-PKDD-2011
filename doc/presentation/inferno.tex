@@ -34,28 +34,16 @@ University of Ioannina, Ioannina, Greeece \\
 \frametitle{Problem preliminaries and intuition}
 
 \begin{itemize}
-	\item Leverage human intervention in content assessment
+	\item We propose \emph{InFeRno}, an intelligent web pornography elimination system, classifying web pages based solely on their visual content
 
-	\begin{enumerate}
-		\item Demanding need for intelligent content assessment
-		\item Content too diverse and enormous to pre-classify manually
-	\end{enumerate}
+	\item Despite the plethora of useful information scattered on the Web, the Internet has become a hostile place for unprotected people (e.g. children)
 
-	\item Nudity-content indicator cues
-	
+	\item The main characteristics of our system are
 	\begin{enumerate}
-		\item exploit accompanying text (prior knowledge)
-		\item visual content (images, video, audio)
-	\end{enumerate}
-	
-	\item Web page assessment based solely on the image content
-
-	\begin{enumerate}
-		\item Determine an efficient feature vector space
-		\item Introduce an intermediate 'bikini' class
-		\item Facilitate identification of 'soft' nudity
-		\item Employ multi-class SVM in a one-against-all scheme
-		\item Provide full-fledged pornography elimination system implementation (ICAP/HTTP proxy integration)
+		\item A minimal but powerful vector space
+		\item An extra 'bikini' class that is observed to improve SVM performance
+		\item A highly accurate and fast classification scheme
+		\item An implementation of the pornography elimination system (allowing ICAP / HTTP proxy integration)
 	\end{enumerate}
 \end{itemize}
 
@@ -66,16 +54,16 @@ University of Ioannina, Ioannina, Greeece \\
 \begin{center}
 	\includegraphics[scale=0.6]{images/network_diagram.png}
 	\begin{enumerate}
-		\item The administrator can tweak classification / network parameters (flexible configuration)
 		\item Standalone implementation of the InFeRno core as an ICAP module (integrates well with most HTTP proxy servers)
 		\item Decoupled image classification and web page preprocessing (network I/O, web page fusion)
 		\item Using a fast ISAM-based cache for fast  I/O (classification lookups, updates, etc)
+        \item The administrator can tweak classification / network parameters (flexible configuration)
 	\end{enumerate}
 \end{center}
 \end{frame}
 
 \begin{frame}
-\frametitle{Image classification}
+\frametitle{Classification System}
 \begin{center}
 		\begin{tabular}[c]{ccc}
 		\ \ \includegraphics[width=.13\columnwidth]{images/orig.pdf}  \ \ &
@@ -85,47 +73,39 @@ University of Ioannina, Ioannina, Greeece \\
 		\end{tabular}
 \end{center}
 
-\begin{itemize}
-  \item 3-stage image processing/classification
+{\underline {\bf Three stages}}
+
      \begin{enumerate}
-        \item Image preprocessing, and skin detection (pixel-based)
-        \item Contour extraction (rough ROI estimation)
-		\item Feature extraction and Classification
+
+        \item Skin detection (Rule-based)
+        \item Contour extraction (region splitting scheme)
+		\item Feature extraction and Classifier
 		  \begin{itemize}
-			\item Selected Features (mean RGB intensities/deviations, skin-to-nonskin ratio, contour orienation, Hu moments)
-	        \item Classification scheme (multi-class one-against-all SVM scheme employing linear/RBF kernels)
+			\item Extracted 15 features: RGB color statistics, skin-to-nonskin ratio, contour orienation, Hu moments
+	        \item SVM classifier with RBF kernel
 	       \end{itemize}
 	\end{enumerate}
-   \item Some key-software used in this module
-      \begin{enumerate}
-		\item OpenCV (mainly image I/O);  libsvm (SVM training); GDK library (GIF support)
-	  \end{enumerate}
-\end{itemize}
+
 \end{frame}
 
 \begin{frame}
-\frametitle{InFeRno vs POESIA}
+\frametitle{Experimental results}
 	\begin{itemize}
-		\item Dataset
-			\begin{enumerate}
-				\item Manually collected a dataset of 680 bikini images, 660 porn images and 4260 benign images from the Web
-			\end{enumerate}
 
-		\item Comparison to the POESIA filter (poesia-filter.org)
-			\begin{enumerate}
-				\item compared InFeRno image filter to that of the POESIA filter in terms of CPU consumption, and generalization ability
-			\end{enumerate}
+		\item Training dataset: manually collected 680 bikini images, 
+		      660 porn images and 4260 benign images from the Web
+
+		\item Comparison with the {\em POESIA filter package}  ({\em www.poesia-filter.org})
+
+		\item Results:
+	          \begin{center}
+		             \includegraphics[scale=1.3]{images/scatter-p-t-all-bars.pdf}
+	          \end{center}
+			  \begin{itemize}
+	                \item \textbf{4x speedup} improvement 
+                    \item Accuracy: 98\% for porn, 97\% for bikini, 98.8\% for benign class (comparable to POESIA)
+	          \end{itemize}
 	\end{itemize}
-	
-	\begin{block}
-	{}
-	A \textbf{4x speedup} was observed on our dataset (comprising porn, bikini and benign images).
-	\end{block}
-
-	\begin{center}
-		\includegraphics[scale=1.3]{images/scatter-p-t-all-bars.pdf}
-	\end{center}
-
 \end{frame}
 
 \begin{frame}
