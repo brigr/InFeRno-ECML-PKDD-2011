@@ -18,7 +18,7 @@
 \institute[UoI]
 {\large
 Department of Computer Science\\
-University of Ioannina, Ioannina, Greeece \\
+University of Ioannina, Ioannina, Greece \\
 \medskip
 {\normalsize E-mail: \{cs061205, ntarmos, kblekas\}@cs.uoi.gr}
 }
@@ -34,16 +34,15 @@ University of Ioannina, Ioannina, Greeece \\
 \frametitle{Problem preliminaries and intuition}
 
 \begin{itemize}
-	\item We propose \emph{InFeRno}, an intelligent web pornography elimination system, classifying web pages based solely on their visual content
-
+	\item \textit{InFeRno} offers to users multi-mode transparent nude content elimination in the browser environment (no exploitable browser plug-in software)
 	\item Despite the plethora of useful information scattered on the Web, the Internet has become a hostile place for unprotected people (e.g. children)
-
 	\item The main characteristics of our system are
+	
 	\begin{enumerate}
+		\item An implementation of the pornography elimination system (allowing ICAP / HTTP proxy integration)
 		\item A minimal but powerful vector space
 		\item An extra 'bikini' class that is observed to improve SVM performance
 		\item A highly accurate and fast classification scheme
-		\item An implementation of the pornography elimination system (allowing ICAP / HTTP proxy integration)
 	\end{enumerate}
 \end{itemize}
 
@@ -65,18 +64,18 @@ University of Ioannina, Ioannina, Greeece \\
 \begin{frame}
 \frametitle{Classification System}
 \begin{center}
-		\begin{tabular}[c]{ccc}
-		\ \ \includegraphics[width=.13\columnwidth]{images/orig.pdf}  \ \ &
-		\ \ \includegraphics[width=.13\columnwidth]{images/skin.pdf} \ \ &
-		\ \ \includegraphics[width=.13\columnwidth]{images/grid.pdf} \ \ \\
-			original image & skin detection & contour extraction \\
+		\begin{tabular}[c]{cccc}
+			\includegraphics[width=.10\columnwidth]{images/orig.pdf}  \ &
+			\includegraphics[width=.10\columnwidth]{images/skin.pdf} \ &
+			\includegraphics[width=.10\columnwidth]{images/grid.pdf} \ &
+			\includegraphics[width=.10\columnwidth]{images/svm.png} \ \\
+			\normalsize{original} & \normalsize{skin} & \normalsize{contour} & \normalsize{SVM}\\
+			\normalsize{image} & \normalsize{detection} & \normalsize{extraction} & \normalsize \\
 		\end{tabular}
 \end{center}
 
 {\underline {\bf Three stages}}
-
      \begin{enumerate}
-
         \item Skin detection (Rule-based)
         \item Contour extraction (region splitting scheme)
 		\item Feature extraction and Classifier
@@ -95,7 +94,7 @@ University of Ioannina, Ioannina, Greeece \\
 		\item Training dataset: manually collected 680 bikini images, 
 		      660 porn images and 4260 benign images from the Web
 
-		\item Comparison with the {\em POESIA filter package}  ({\em www.poesia-filter.org})
+		\item Comparison with the EU-funded {\em POESIA pornography elimination system}
 
 		\item Results:
 	          \begin{center}
