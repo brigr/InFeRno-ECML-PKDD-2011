@@ -35,17 +35,17 @@ University of Ioannina, Ioannina, Greece \\
 
 \begin{itemize}
 
-	\item Motivation
+	\item Motivation:
 	\begin{enumerate}
 		\item Lots of "bad" pages out there
 		\item Human-driven classification is highly impractical
 		\item Need for an unobtrusive filtering method
 	\end{enumerate}
 
-	\item Main characteristics of our system
+	\item Main characteristics of our system:
 	\begin{enumerate}
 		\item A minimal but powerful vector space
-		\item An extra 'bikini' class
+		\item An extra "bikini" class
 		\item A highly accurate and fast classification scheme
 		\item An implementation of the classifier as a standalone
 		network service (ubiquity and ease of use)
@@ -60,10 +60,10 @@ University of Ioannina, Ioannina, Greece \\
 \begin{center}
 	\includegraphics[scale=0.6]{images/network_diagram.png}
 	\begin{enumerate}
-		\item Standalone implementation of the InFeRno core as an ICAP module (integrates well with most HTTP proxy servers)
-		\item Decoupled image classification and web page preprocessing (network I/O, web page fusion)
+		\item Implementation of the InFeRno core as an ICAP module (integrates well with most HTTP proxy servers)
+		\item Decoupled image classification and web page preprocessing (network I/O, image-score fusion)
 		\item Using a fast ISAM-based cache for fast  I/O (classification lookups, updates, etc)
-        \item The administrator can tweak classification / network parameters (flexible configuration)
+        \item Flexible configuration (multiple classification + network parameters)
 	\end{enumerate}
 \end{center}
 \end{frame}
@@ -87,7 +87,7 @@ University of Ioannina, Ioannina, Greece \\
         \item Contour extraction (region splitting scheme)
 		\item Feature extraction and Classifier
 		  \begin{itemize}
-			\item Extracted 15 features: RGB color statistics, skin-to-nonskin ratio, contour orienation, Hu moments
+			\item Extracted 15 features: RGB color statistics, skin-to-nonskin ratio, contour orientation, Hu moments
 	        \item SVM classifier with RBF kernel
 	       \end{itemize}
 	\end{enumerate}
