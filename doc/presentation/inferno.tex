@@ -34,15 +34,24 @@ University of Ioannina, Ioannina, Greece \\
 \frametitle{Problem preliminaries and intuition}
 
 \begin{itemize}
-	\item \textit{InFeRno} offers to users multi-mode transparent nude content elimination in the browser environment (no exploitable browser plug-in software)
-	\item Despite the plethora of useful information scattered on the Web, the Internet has become a hostile place for unprotected people (e.g. children)
-	\item The main characteristics of our system are
-	
+
+	\item Motivation
 	\begin{enumerate}
-		\item An implementation of the pornography elimination system (allowing ICAP / HTTP proxy integration)
+		\item Lots of "bad" pages out there
+		\item Human-driven classification is highly impractical
+		\item Need for an unobtrusive filtering method
+	\end{enumerate}
+
+	\item Main characteristics
+	\begin{enumerate}
 		\item A minimal but powerful vector space
-		\item An extra 'bikini' class that is observed to improve SVM performance
+		\item An extra 'bikini' class
 		\item A highly accurate and fast classification scheme
+		\item An implementation of the classifier as a standalone
+		network service (ubiquity and ease of use)
+		\item Integreation of the classifier with off-the-shelf cache
+		server through an ICAP interface (can be transparently applied
+		to whole networks)
 	\end{enumerate}
 \end{itemize}
 
@@ -102,7 +111,7 @@ University of Ioannina, Ioannina, Greece \\
 	          \end{center}
 			  \begin{itemize}
 	                \item \textbf{4x speedup} improvement 
-                    \item Accuracy: 98\% for porn, 97\% for bikini, 98.8\% for benign class (comparable to POESIA)
+                    \item High accuracy (comparable to POESIA for images and image-only pages)
 	          \end{itemize}
 	\end{itemize}
 \end{frame}
