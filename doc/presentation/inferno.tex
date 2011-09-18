@@ -12,7 +12,7 @@
 \usepackage{bm} 
 \usepackage{wasysym}
 
-\title[ECML/PKDD 2011 demo session (demo \#10)]{InFeRno - an Intelligent Framework for Recognizing Pornographic Web pages}
+\title[ECML PKDD 2011 demo session (demo \#10)]{InFeRno - an Intelligent Framework for Recognizing Pornographic Web pages}
 \author{\bf{\underline{S. Karavarsamis}, N. Ntarmos and K. Blekas }}
 
 \institute[UoI]
@@ -62,7 +62,7 @@ University of Ioannina, Ioannina, Greece \\
 		\item Implementation of the InFeRno core as an ICAP module (integrates well with most HTTP proxy servers)
 		\item Decoupled image classification and web page preprocessing (network I/O, image-score fusion)
 		\item Using a fast ISAM-based cache for fast  I/O (classification lookups, updates, etc)
-        \item Flexible configuration (multiple classification + network parameters)
+        \item Flexible configuration (multiple classification \& network parameters)
 	\end{enumerate}
 \end{center}
 \end{frame}
@@ -84,7 +84,7 @@ University of Ioannina, Ioannina, Greece \\
      \begin{enumerate}
         \item Skin detection (rule-based)
         \item Contour extraction (region splitting scheme)
-		\item Feature extraction and Classifier
+		\item Feature extraction and classification
 		  \begin{itemize}
 			\item Extracted 15 features: RGB color statistics, skin-to-nonskin ratio, contour orientation, Hu moments
 	        \item SVM classifier with RBF kernel
@@ -96,12 +96,9 @@ University of Ioannina, Ioannina, Greece \\
 \begin{frame}
 \frametitle{Experimental results}
 	\begin{itemize}
-
 		\item Training dataset: manually collected 680 bikini images, 
 		      660 porn images and 4260 benign images from the Web
-
 		\item Comparison with the EU-funded {\em POESIA pornography elimination system}
-
 		\item Results:
 	          \begin{center}
 		             \includegraphics[scale=1.3]{images/scatter-p-t-all-bars.pdf}
