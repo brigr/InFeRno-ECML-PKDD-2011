@@ -1,7 +1,7 @@
-The repository contains the presentation slides/poster that were used for the demo
+The repository contains the presentation slides and poster that were used for the demo
 paper entitled "InFeRno - an Intelligent Framework for Recognizing Pornographic
-Web Pages", which was presented at the ECML PKDD 2011 Conference in Athens, Greece.
+Web Pages", which was presented at the ECML-PKDD 2011 conference held in Athens, Greece.
 
-More specifically, here you can find:
-a) the poster source code base of the paper in baposter/LaTeX, and
-b) the presentation slides of the demo paper
+More specifically, in this repository you will find:
+a) the sources of the paper's poster in baposter/LaTeX, and
+b) the presentation slides of the demo paper (beamer/LaTeX)
