@@ -1,5 +1,4 @@
 \documentclass[portrait,a0paper,final,margin=6em]{baposter}
-
 \tracingstats=2
 \usepackage[vlined]{algorithm2e}
 \usepackage{calc}
@@ -9,7 +8,6 @@
 \usepackage{relsize}
 \usepackage{multirow}
 \usepackage{bm}
-%\usepackage{ae}
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage{pgfbaselayers}
@@ -19,33 +17,14 @@
 \usepackage[T1]{fontenc}
 \usepackage{times}
 \usepackage{helvet}
-%\usepackage{bookman}
 \usepackage{palatino}
-
 \newcommand{\captionfont}{\footnotesize}
 \selectcolormodel{cmyk}
 \graphicspath{{images/}}
-%\usepackage[vlined]{algorithm2e}
-%\usepackage{times}
-%\usepackage{calc}
-%\usepackage{url}
-%\usepackage{graphicx}
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-%\usepackage{relsize}
-%\usepackage{multirow}
-%\usepackage{booktabs}
-%
-%\usepackage{graphicx}
-%\usepackage{multicol}
-%\usepackage[T1]{fontenc}
-%\usepackage{ae}
-%
-%\graphicspath{{images/}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Some math symbols used in the text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Format 
 \newcommand{\Matrix}[1]{\begin{bmatrix} #1 \end{bmatrix}}
 \newcommand{\Vector}[1]{\Matrix{#1}}
 \newcommand*{\SET}[1]  {\ensuremath{\mathcal{#1}}}
@@ -55,37 +34,19 @@
 \newcommand*{\norm}[1]{\mathopen\| #1 \mathclose\|}% use instead of $\|x\|$
 \newcommand*{\abs}[1]{\mathopen| #1 \mathclose|}% use instead of $\|x\|$
 \newcommand*{\absLR}[1]{\left| #1 \right|}% use instead of $\|x\|$
-
 \def\norm#1{\mathopen\| #1 \mathclose\|}% use instead of $\|x\|$
 \newcommand{\normLR}[1]{\left\| #1 \right\|}% use instead of $\|x\|$
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Multicol Settings
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\columnsep}{0.7em}
 \setlength{\columnseprule}{0mm}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Save space in lists. Use this after the opening of the list
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\compresslist}{%
 \setlength{\itemsep}{1pt}%
 \setlength{\parskip}{0pt}%
 \setlength{\parsep}{0pt}%
 }
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Begin of Document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Here starts the poster
-%%%---------------------------------------------------------------------------
-%%% Format it to your taste with the options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \typeout{Poster Starts}
 %\background{
 %  \begin{tikzpicture}[remember picture,overlay]%
@@ -107,11 +68,8 @@
 \newlength{\leftimgwidth}
 
 \begin{poster}{
-  % Show grid to help with alignment
   grid=no,
-  % Column spacing
   colspacing=1em,
-  % Color style
   bgColorOne=lighteryellow,
   bgColorTwo=lightestyellow,
   borderColor=reddishyellow,
@@ -120,9 +78,7 @@
   headerFontColor=black,
   boxColorOne=lightyellow,
   boxColorTwo=lighteryellow,
-  % Format of textbox
   textborder=roundedleft,
-  % Format of text header
   %eyecatcher=no,
   headerborder=open,
   headerheight=0.07\textheight,
@@ -130,73 +86,32 @@
   headershade=plain,
   headerfont=\Large\textsf, %Sans Serif
   boxshade=plain,
-%  background=shade-tb,
+  %background=shade-tb,
   background=plain,
   linewidth=2pt
   }
-  % Eye Catcher
-  %{} % No eye catcher for this poster. If an eye catcher is present, the title is centered between eye-catcher and logo.
-  % Title
   {
       \includegraphics[width=0.1\linewidth]{UOI-logo}   
   }
   % Title
   {\sf %Sans Serif
-  %\bf% Serif
+  \bf% Serif
   \LARGE\bf{{InFeRno - an Intelligent Framework \\ for Recognizing Pornographic Web Pages}}}
-  % Authors
   {\sf %Sans Serif
-  % Serif
   	\vspace{-0.01em}\large{Sotiris Karavarsamis, Nikos Ntarmos and Konstantinos Blekas  \\
      [-0.3em]\normalsize University of Ioannina, Greece}\\
      [-0.3em]\small \{cs061205, ntarmos, kblekas\}@cs.uoi.gr   }
   {
       \includegraphics[width=0.11\linewidth,height=3em]{ecml2011}   
   }
-%  {
-%	\includegraphics[width=0.1\linewidth]{UOI-logo}
-%  }
-%  %
-%  {\sf %Sans Serif
-%  % Serif
-%  	\LARGE\bf{{InFeRno - an Intelligent Framework for Recognizing Pornographic Web Pages}}}
-%  % Authors
-%  %{\sf %Sans Serif
-%  % Serif
-%  {\sf 
-%  	\vspace{-0.01em}\large{Sotiris Karavarsamis, Nikos Ntarmos and Konstantinos Blekas}\\
-%    [-0.3em]\normalsize University of Ioannina, Greece \\
-%    [-0.3em]\small \{cs061205, ntarmos, kblekas\}@cs.uoi.gr
-%  }
-%  {
-%      \includegraphics[width=0.11\linewidth,height=6em]{ewrl}   
-%  }
 
   \tikzstyle{light shaded}=[top color=baposterBGtwo!30!white,bottom color=baposterBGone!30!white,shading=axis,shading angle=30]
 
-  % Width of left inset image
-     %\newlength{\leftimgwidth}
-     %\setlength{\leftimgwidth}{0.78em+8.0em}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Now define the boxes that make up the poster
-%%%---------------------------------------------------------------------------
-%%% Each box has a name and can be placed absolutely or relatively.
-%%% The only inconvenience is that you can only specify a relative position 
-%%% towards an already declared box. So if you have a box attached to the 
-%%% bottom, one to the top and a third one which should be in between, you 
-%%% have to specify the top and bottom boxes before you specify the middle 
-%%% box.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    %
-    % A coloured circle useful as a bullet with an adjustably strong filling
     \newcommand{\colouredcircle}[1]{%
       \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=baposterBGone!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Problem preliminaries}{name=problem,column=0}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\large
+    \large
 	\vspace{0.35 cm}
 	\begin{itemize}
 		\item We propose \textit{InFeRno}, an intelligent web
@@ -218,9 +133,8 @@
 	\end{itemize}
 	\vspace{1 cm}
   }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \headerbox{InFeRno architecture}{name=arch,column=1,span=2,row=0}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\large
 	\begin{center}
 		\includegraphics[scale=0.65]{network_diagram.png}
@@ -242,10 +156,7 @@
 	\vspace{0.3 em}
    }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{References}{name=refs,column=0,span=3,row=2,above=bottom}{
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{enumerate}
 		\item POESIA filter project, "Poesia project" http://www.poesia-filter.org/.
 		\item W. Hu, O. Wu, Z. Chen, Z. Fu, and S. Maybank, "Recognition
@@ -256,9 +167,7 @@
 		\textit{Graphicon}, pp. 85-92, 2003.
 	\end{enumerate}
   }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Experimental results}{name=expres,column=1,span=2,row=1,below=arch,above=refs}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\large
 	%\vspace{0.5 cm}
 	\begin{itemize}
@@ -281,9 +190,7 @@
     %\vspace{9.5 mm}
   }%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Classification system}{name=imclass,column=0,span=1,row=1,below=problem,above=refs}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\large
 	%\vspace{1 cm}
 	{
@@ -301,8 +208,6 @@
 	\end{center}
 	}
 	
-	%\begin{itemize}
-		%\item
 		Three stages
 			\begin{itemize}
 				\item Skin detection [3] (Rule-based)
@@ -313,7 +218,6 @@
 						\item SVM classifier with RBF kernel
 					\end{itemize}
 			\end{itemize}
-	%\end{itemize}
 	}
-\end{poster}%
+\end{poster}
 \end{document}
